@@ -1,0 +1,28 @@
+name: Defect
+description: Open a defect issue for the Ben Eater 6502 emulator.
+labels: ["type:bug"]
+body:
+  - type: textarea
+    id: details-1
+    attributes:
+      label: Version, OS and machine profile
+    validations:
+      required: true
+  - type: textarea
+    id: details-2
+    attributes:
+      label: Steps and reproducible fixture
+    validations:
+      required: true
+  - type: textarea
+    id: details-3
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: details-4
+    attributes:
+      label: Verification and regression coverage
+    validations:
+      required: true
