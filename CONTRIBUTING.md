@@ -7,6 +7,15 @@
 5. Send findings back with `@copilot` on the PR. Fix and push on the same branch. Re-run CI and re-request review on the new commit.
 6. Apply `ready-to-merge` after passing checks and resolving blockers. Leave the issue open. The owner manually merges into the default branch and GitHub closes the linked issue.
 
-The foundation backlog establishes the checked-in Gradle Wrapper, pinned Java and JavaFX versions, and CI checks. Repository settings and permissions require the owner's approval.
+Repository settings and permissions require the owner's approval.
+
+## Local build
+
+Install a JDK 25 distribution and make it available via JAVA_HOME or PATH. The first run downloads the pinned Gradle 9.1.0 distribution and build dependencies. JavaFX 25.0.2 is scoped to the desktop project and the tests use JUnit 6.0.3.
+
+- Windows PowerShell: `.\gradlew.bat check`
+- Linux and macOS: `./gradlew check`
+
+The root check runs each project's checks. To run only the headless smoke test, use the same wrapper with `:emulator-core:test`. The desktop test checks JavaFX class resolution without opening a window. The Java-only projects are `opcode-metadata`, `emulator-core`, and `assembly-tools`. JavaFX belongs in `desktop-app`.
 
 [Copilot review workflow](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/review-copilot-output) · [GitHub issue closing](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)
