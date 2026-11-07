@@ -1,6 +1,6 @@
 # ADR 0001 — Desktop stack and distribution
 
-**Accepted direction.** Java/JavaFX and a standalone headless Java core. Proposed baseline is Java 25 LTS, compatible JavaFX, Gradle Wrapper with Kotlin DSL, JUnit, GitHub Actions, and jpackage. Foundation work validates and pins versions.
+**Accepted direction.** Java/JavaFX and a standalone headless Java core. The foundation uses JDK 25 LTS, JavaFX 25.0.2, Gradle Wrapper 9.1.0 with Kotlin DSL, and JUnit 6.0.3. GitHub Actions and jpackage are planned for the CI and packaging issues.
 
 | Option | Trade-offs |
 |---|---|
