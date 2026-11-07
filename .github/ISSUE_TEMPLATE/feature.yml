@@ -1,0 +1,28 @@
+name: Implementation
+description: Open a implementation issue for the Ben Eater 6502 emulator.
+labels: ["type:feature"]
+body:
+  - type: textarea
+    id: details-1
+    attributes:
+      label: Problem and scope
+    validations:
+      required: true
+  - type: textarea
+    id: details-2
+    attributes:
+      label: Out of scope
+    validations:
+      required: true
+  - type: textarea
+    id: details-3
+    attributes:
+      label: Prerequisites and references
+    validations:
+      required: true
+  - type: textarea
+    id: details-4
+    attributes:
+      label: Acceptance criteria and required tests
+    validations:
+      required: true

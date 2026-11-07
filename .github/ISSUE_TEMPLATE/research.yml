@@ -1,0 +1,28 @@
+name: Hardware research
+description: Open a hardware research issue for the Ben Eater 6502 emulator.
+labels: ["type:research"]
+body:
+  - type: textarea
+    id: details-1
+    attributes:
+      label: Question and affected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: details-2
+    attributes:
+      label: Sources and evidence to collect
+    validations:
+      required: true
+  - type: textarea
+    id: details-3
+    attributes:
+      label: Decision or artifact to record
+    validations:
+      required: true
+  - type: textarea
+    id: details-4
+    attributes:
+      label: Blocked issues
+    validations:
+      required: true
