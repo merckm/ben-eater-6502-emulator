@@ -1,3 +1,5 @@
+import org.gradle.api.plugins.quality.CheckstyleExtension
+
 plugins {
     base
 }
@@ -8,6 +10,11 @@ subprojects {
     }
 
     plugins.withType<JavaPlugin> {
+        apply(plugin = "checkstyle")
+        extensions.configure<CheckstyleExtension> {
+            toolVersion = "14.3.0"
+        }
+
         extensions.configure<JavaPluginExtension> {
             toolchain.languageVersion.set(JavaLanguageVersion.of(25))
         }
