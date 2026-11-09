@@ -10,3 +10,11 @@ Each feature PR supplies targeted unit tests. Test initial state, normal operati
 - CI: formatting, static checks and headless tests on PRs, desktop and packaging smoke jobs on supported hosts. Start with a 90% line-coverage target for the core after measuring its baseline. Report branch coverage and hardware-behavior coverage separately.
 
 Record achieved clock rate on a named host with the representative workload, warmup, sample interval and desktop refresh settings. Treat 1 MHz as the baseline and 10 MHz as a stretch goal.
+
+## Pull request checks
+
+Run `./gradlew --no-daemon --console=plain check` with JDK 25 on Linux or macOS, or replace `./gradlew` with `.\gradlew.bat` on Windows. This runs Checkstyle on Java production and test sources, JUnit tests without a display, and the emulator core JaCoCo report. To regenerate only the core report and its tests, run `:emulator-core:jacocoTestReport` with the wrapper.
+
+GitHub Actions runs the same command on Ubuntu and Windows. The proposed required check names are **Gradle check (ubuntu-latest)** and **Gradle check (windows-latest)**. The owner can enable them in the ruleset after a successful run establishes those names.
+
+Each run uploads JUnit XML, HTML test reports, Checkstyle reports, and core JaCoCo HTML and XML when available. Locally the coverage report is in `emulator-core/build/reports/jacoco/test/`. The foundation has no production classes in the core, so the initial report has no measurable line or branch denominator. Coverage is informational until a real baseline exists.

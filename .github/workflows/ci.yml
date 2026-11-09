@@ -1,0 +1,49 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gradle-check:
+    name: Gradle check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+      - name: Run Gradle checks
+        shell: pwsh
+        run: |
+          if ($IsWindows) {
+            .\gradlew.bat --no-daemon --console=plain check
+          } else {
+            ./gradlew --no-daemon --console=plain check
+          }
+          exit $LASTEXITCODE
+      - name: Upload verification reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: verification-reports-${{ matrix.os }}
+          path: |
+            **/build/test-results/test/TEST-*.xml
+            **/build/reports/tests/test/
+            **/build/reports/checkstyle/
+            emulator-core/build/reports/jacoco/test/
