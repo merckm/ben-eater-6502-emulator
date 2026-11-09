@@ -7,7 +7,7 @@
 5. Send findings back with `@copilot` on the PR. Fix and push on the same branch. Re-run CI and re-request review on the new commit.
 6. Apply `ready-to-merge` after passing checks and resolving blockers. Leave the issue open. The owner manually merges into the default branch and GitHub closes the linked issue.
 
-Repository settings and permissions require the owner's approval.
+See the [Copilot setup and smoke-test guide](docs/copilot-setup.md) for account prerequisites and setup verification. Repository settings and permissions require the owner's approval.
 
 ## Local build
 
